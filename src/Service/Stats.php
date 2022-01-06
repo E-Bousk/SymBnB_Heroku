@@ -58,7 +58,7 @@ class Stats
             FROM App\Entity\Comment c
             JOIN c.ad a
             JOIN a.author u
-            GROUP BY a
+            GROUP BY a, u.firstName, u.lastName, u.picture
             ORDER BY note ' . $direction
         )->setMaxResults(5)
         ->getResult();

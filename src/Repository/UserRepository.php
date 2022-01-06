@@ -22,11 +22,11 @@ class UserRepository extends ServiceEntityRepository
     public function findBestUsers(int $limit = 2)
     {
         return $this->createQueryBuilder('u')
-            ->select('u as user, AVG(c.rating) as avgRatings, COUNT(c) as sumComments')
+            ->select('u as user, AVG(c.rating) as avgRatings, COUNT(c)')
             ->join('u.ads', 'a')
             ->join('a.comments', 'c')
             ->groupBy('u')
-            ->having('sumComments > 3')
+            ->having('COUNT(c) > 3')
             ->orderBy('avgRatings', 'DESC')
             ->setMaxResults($limit)
             ->getQuery()

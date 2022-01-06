@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="`user`")
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(fields={"email"}, message="L'adresse email {{ value }} existe déjà")
  */
